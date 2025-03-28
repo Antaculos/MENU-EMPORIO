@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Encomendas - Empório da Nina</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px auto;
+            max-width: 960px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        .categoria-menu {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .item-menu {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .item-menu input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .informacoes-cliente {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .informacoes-cliente label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .informacoes-cliente input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #total-pedido {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #botao-whatsapp {
+            display: block;
+            width: 200px;
+            margin: 15px auto;
+            padding: 10px 20px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+        }
+        #botao-whatsapp:hover {
+            background-color: #128C7E;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="URL_DA_SUA_IMAGEM_AQUI" alt="Empório da Nina Logo" class="logo">
+        <p>@EMPORIOLANINAOficial</p>
+        <p>'A MASSA QUE DERRETE NA BOCA'</p>
+    </div>
+    <h2>Selecione os itens desejados para encomenda:</h2>
+    <div class="categoria-menu">
+        <h3>EMPADÃO 800GR Massa Brasileira</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_palmito_800" value="15.00" onchange="calcularTotal()">
+            <label for="empadao_palmito_800">Empadão palmito 800GR - 15,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_frango_800" value="15.00" onchange="calcularTotal()">
+            <label for="empadao_frango_800">Empadão frango 800GR - 15,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_frango_cc_800" value="15.50" onchange="calcularTotal()">
+            <label for="empadao_frango_cc_800">Empadão frango c/ Cream Cheese 800GR - 15,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_chourico_cc_800" value="15.50" onchange="calcularTotal()">
+            <label for="empadao_chourico_cc_800">Empadão Chouriço com Cream Cheese 800GR - 15,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_camarao_800" value="20.00" onchange="calcularTotal()">
+            <label for="empadao_camarao_800">Empadão Camarão 800GR - 20,00€</label>
+        </div>
+    </div>
+    <div class="categoria-menu">
+        <h3>EMPADÃO 400GR Massa Brasileira</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_palmito_400" value="10.00" onchange="calcularTotal()">
+            <label for="empadao_palmito_400">Empadão palmito 400GR - 10,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_frango_400" value="10.00" onchange="calcularTotal()">
+            <label for="empadao_frango_400">Empadão frango 400GR - 10,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_frango_cc_400" value="10.00" onchange="calcularTotal()">
+            <label for="empadao_frango_cc_400">Empadão frango c/ Cream Cheese 400GR - 10,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_chourico_cc_400" value="10.00" onchange="calcularTotal()">
+            <label for="empadao_chourico_cc_400">Empadão Chouriço com Cream Cheese 400GR - 10,00€</label>
+        </div>
+    </div>
+    <div class="categoria-menu">
+        <h3>EMPADÃO INDIVIDUAL 240GR Massa Brasileira</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_frango_240" value="5.50" onchange="calcularTotal()">
+            <label for="empadao_frango_240">Empadão frango Individual 240GR - 5,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_frango_cc_240" value="6.00" onchange="calcularTotal()">
+            <label for="empadao_frango_cc_240">Empadão frango c/ Cream Cheese Individual 240GR - 6,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_chourico_cc_240" value="6.00" onchange="calcularTotal()">
+            <label for="empadao_chourico_cc_240">Empadão Chouriço com Cream Cheese Individual 240GR - 6,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_palmito_240" value="6.00" onchange="calcularTotal()">
+            <label for="empadao_palmito_240">Empadão palmito Individual 240GR - 6,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empadao_camarao_240" value="7.50" onchange="calcularTotal()">
+            <label for="empadao_camarao_240">Empadão Camarão Individual 240GR - 7,50€</label>
+        </div>
+    </div>
+    <div class="categoria-menu">
+        <h3>EMPADA G C/ 6 UNIDADES Massa Brasileira</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_g_frango" value="10.00" onchange="calcularTotal()">
+            <label for="empada_g_frango">Empada G. Frango (6 unidades) - 10.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_g_frango_cc" value="10.00" onchange="calcularTotal()">
+            <label for="empada_g_frango_cc">Empada G de Frango com Cream Cheese (6 unidades) - 10.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_g_palmito" value="10.00" onchange="calcularTotal()">
+            <label for="empada_g_palmito">Empada G de Palmito (6 unidades) - 10.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_g_queijo" value="10.00" onchange="calcularTotal()">
+            <label for="empada_g_queijo">Empada G de queijo (6 unidades) - 10.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_g_camarao" value="12.00" onchange="calcularTotal()">
+            <label for="empada_g_camarao">Empada G.e de Camarão (6 unidades) - 12.00€</label>
+        </div>
+    </div><div class="categoria-menu">
+        <h3>Mini-Empadas Salgadas</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_frango_cc" value="6.50" onchange="calcularTotal()">
+            <label for="mini_empada_frango_cc">Mini Empadas de Frango Cream Cheese - 6,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_frango" value="6.50" onchange="calcularTotal()">
+            <label for="mini_empada_frango">Mini Empadas de Frango - 6,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_chourico_cc" value="6.50" onchange="calcularTotal()">
+            <label for="mini_empada_chourico_cc">Mini Empadas de Chouriço com Cream Cheese - 6,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_milho" value="6.50" onchange="calcularTotal()">
+            <label for="mini_empada_milho">Mini Empadas de Creme de Milho - 6,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_palmito" value="6.50" onchange="calcularTotal()">
+            <label for="mini_empada_palmito">Mini Empadas de Palmito - 6,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_queijo" value="6.50" onchange="calcularTotal()">
+            <label for="mini_empada_queijo">Mini Empadas de Queijo - 6,50€</label>
+        </div>
+    </div>
+    <div class="categoria-menu">
+        <h3>Mini-Empadas Doces</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_goiabada_cc" value="7.00" onchange="calcularTotal()">
+            <label for="mini_empada_goiabada_cc">Mini Empadas de Goiabada com Cream Cheese - 7,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_leite_condensado" value="7.00" onchange="calcularTotal()">
+            <label for="mini_empada_leite_condensado">Mini Empadas de Leite Condensado - 7,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_empada_nutela" value="7.00" onchange="calcularTotal()">
+            <label for="mini_empada_nutela">Mini Empadas de Nutela - 7.00€</label>
+        </div>
+    </div>
+    <div class="categoria-menu">
+        <h3>EMPADA G C/ 6 UNIDADES Massa modelo Portuguesa</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_portuguesa_frango" value="10.00" onchange="calcularTotal()">
+            <label for="empada_portuguesa_frango">Empada G formato portuguesa de frango (6 unidades) - 10.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_portuguesa_frango_cc" value="10.00" onchange="calcularTotal()">
+            <label for="empada_portuguesa_frango_cc">Empada G formato portuguesa frango cream cheese (6 unidades) - 10.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_portuguesa_chourico_cc" value="10.00" onchange="calcularTotal()">
+            <label for="empada_portuguesa_chourico_cc">Empada formato portuguesa Chouriço c/ cream cheese (6 unidades) - 10.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_portuguesa_alho_queijo" value="11.00" onchange="calcularTotal()">
+            <label for="empada_portuguesa_alho_queijo">Empada G formato portuguesa de Alho francês c/ queijo (6 unidades) - 11.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_portuguesa_espinafre_ricota" value="11.00" onchange="calcularTotal()">
+            <label for="empada_portuguesa_espinafre_ricota">Empada G formato portuguesa de Espinafre c/ ricota (6 unidades) - 11.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_portuguesa_jardineira" value="11.00" onchange="calcularTotal()">
+            <label for="empada_portuguesa_jardineira">Empada G formato portuguesa de Jardineira (6 unidades) - 11.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="empada_portuguesa_palmito" value="11.00" onchange="calcularTotal()">
+            <label for="empada_portuguesa_palmito">Empada G formato portuguesa de Palmito (6 unidades) - 11.00€</label>
+        </div>
+    </div>
+
+    <div class="categoria-menu">
+        <h3>Salgados Assados C/ 5 unidades</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="esfirra_g_frango" value="10.00" onchange="calcularTotal()">
+            <label for="esfirra_esfirra_g_frango">Esfirra G de Frango - Peito de frango desfiado, pimentos amarelo e temperos - 10.00€ (5 unidades)</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="esfirra_g_fiambre_queijo" value="10.00" onchange="calcularTotal()">
+            <label for="esfirra_g_fiambre_queijo">Esfirra G de fiambre e queijo - 5 Queijos,fiambre e orégano - 10.00€ (5 unidades)</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="esfirra_g_carne" value="10.00" onchange="calcularTotal()">
+            <label for="esfirra_g_carne">Esfirra G de Carne picada de vaca - Carne de vaca picada(moida), Pimenta B. cebola,tomate e temperos - 10.00€ (5 unidades)</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="a_moda_da_nina" value="10.00" onchange="calcularTotal()">
+            <label for="a_moda_da_nina">A Moda da Nina - Fiambre, queijo, milho e cream cheese - 10.00€ (5 unidades)</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="joelho" value="10.00" onchange="calcularTotal()">
+            <label for="joelho">Joelho - Fiambre, queijo,tomate e orégano - 10.00€ (5 unidades)</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="dogao_g" value="10.00" onchange="calcularTotal()">
+            <label for="dogao_g">Dogão G de salsicha - 10.00€ (5 unidades)</label>
+        </div>
+    </div>
+
+    <div class="categoria-menu">
+        <h3>MINI SALGADO ASSADOS</h3>
+        <h4>Mini Doguinho de Salsicha</h4>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_doguinho_10" value="6.00" onchange="calcularTotal()">
+            <label for="mini_doguinho_10">Mini Doguinho de Salsicha - 10 unidades....6.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_doguinho_15" value="9.00" onchange="calcularTotal()">
+            <label for="mini_doguinho_15">Mini Doguinho de Salsicha - 15 unidades....9.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_doguinho_30" value="15.00" onchange="calcularTotal()">
+            <label for="mini_doguinho_30">Mini Doguinho de Salsicha - 30 unidades....15.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_doguinho_50" value="25.00" onchange="calcularTotal()">
+            <label for="mini_doguinho_50">Mini Doguinho de Salsicha - 50 unidades....25.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_doguinho_100" value="45.00" onchange="calcularTotal()">
+            <label for="mini_doguinho_100">Mini Doguinho de Salsicha - 100 unidades...45.00€</label>
+        </div>
+
+        <h4>Mini Esfirra de Frango</h4>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_frango_10" value="9.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_frango_10">Mini Esfirra de Frango - 10 unidades....9.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_frango_15" value="13.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_frango_15">Mini Esfirra de Frango - 15 unidades...13.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_frango_30" value="25.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_frango_30">Mini Esfirra de Frango - 30 unidades...25.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_frango_50" value="40.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_frango_50">Mini Esfirra de Frango - 50 unidades...40.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_frango_100" value="60.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_frango_100">Mini Esfirra de Frango - 100 unidades...60.00€</label>
+        </div>
+
+        <h4>Mini Esfirra de Carne picada</h4>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_carne_10" value="9.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_carne_10">Mini Esfirra de Carne picada - 10 unidades....9.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_carne_15" value="13.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_carne_15">Mini Esfirra de Carne picada - 15 unidades...13.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_carne_30" value="25.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_carne_30">Mini Esfirra de Carne picada - 30 unidades...25.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_carne_50" value="40.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_carne_50">Mini Esfirra de Carne picada - 50 unidades...40.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_carne_100" value="60.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_carne_100">Mini Esfirra de Carne picada - 100 unidades...60.00€</label>
+        </div>
+
+        <h4>Mini Esfirra de fiambre e queijo</h4>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_fiambre_queijo_10" value="9.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_fiambre_queijo_10">Mini Esfirra de fiambre e queijo - 10 unidades....9.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_fiambre_queijo_15" value="13.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_fiambre_queijo_15">Mini Esfirra de fiambre e queijo - 15 unidades...13.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_fiambre_queijo_30" value="25.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_fiambre_queijo_30">Mini Esfirra de fiambre e queijo - 30 unidades...25.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_fiambre_queijo_50" value="40.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_fiambre_queijo_50">Mini Esfirra de fiambre e queijo - 50 unidades...40.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="mini_esfirra_fiambre_queijo_100" value="60.00" onchange="calcularTotal()">
+            <label for="mini_esfirra_fiambre_queijo_100">Mini Esfirra de fiambre e queijo - 100 unidades...60.00€</label>
+        </div>
+    </div>
+
+    <div class="categoria-menu">
+        <h3>QUICHE</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="quiche_alho_queijo" value="2.50" onchange="calcularTotal()">
+            <label for="quiche_alho_queijo">Quiche Alho Frances e Queijo - 2,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="quiche_alho_bacon" value="2.50" onchange="calcularTotal()">
+            <label for="quiche_alho_bacon">Quiche Alho Frances e Bacon - 2,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="quiche_jardineira" value="2.50" onchange="calcularTotal()">
+            <label for="quiche_jardineira">Quiche Jardineira - 2,50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="quiche_espinafre" value="2.50" onchange="calcularTotal()">
+            <label for="quiche_espinafre">Quiche Espinafre - 2,50€</label>
+        </div>
+    </div>
+
+    <div class="categoria-menu">
+        <h3>ESPAÇO DA NINA VARIEDADE DE SABOR</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="kibe_forno" value="15.00" onchange="calcularTotal()">
+            <label for="kibe_forno">KIBE DE FORNO 800GR - KIBE,CARNE PICADA, CHEESE E TEMPEROS - 15,00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="torta_pao" value="17.00" onchange="calcularTotal()">
+            <label for="torta_pao">TORTA DE PÃO - PAO,FRANGOS,CENOURA,MAIONESE,MILHO,TEMPEROS E FINALIZA COM O PURE DE BATATA 900GR......17,00€</label>
+        </div>
+    </div>
+
+    <div class="categoria-menu">
+        <h3>Bolos</h3>
+        <div class="item-menu">
+            <input type="checkbox" id="bolo_churros" value="5.00" onchange="calcularTotal()">
+            <label for="bolo_churros">Bolo churros - Massa amanteigada com cobertura de doce de leite - 5.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="bolo_iogurte_nido" value="5.50" onchange="calcularTotal()">
+            <label for="bolo_iogurte_nido">Bolo iogurte com cobertura de nido - Massa de iogurte com cobertura de nido - 5.50€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="bolo_duo_chocolate_nido" value="5.00" onchange="calcularTotal()">
+            <label for="bolo_duo_chocolate_nido">Bolo Duo chocolate com cobertura de nido - Masssa de chocolate, cobertura de nido finalizado com nutella - 5.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="bolo_chocolate" value="5.00" onchange="calcularTotal()">
+            <label for="bolo_chocolate">bolo chocolate - Massa de chocolate e cobertura brigadeiro cremoso - 5.00€</label>
+        </div>
+        <div class="item-menu">
+            <input type="checkbox" id="bolo_cenoura" value="5.00" onchange="calcularTotal()">
+            <label for="bolo_cenoura">Bolo Cenoura - Massa de cenoura e cobertura brigadeiro cremoso - 5.00€</label>
+        </div>
+    </div>
+
+    <div class="categoria-menu">
+        <h3>Biscoito Amanteigado Pacote com 100GR</h3>
+        <div class="item-menu">
+            </div>
+    </div>
+
+    <div class="informacoes-cliente">
+        <h3>Informações para Encomenda</h3>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="local_entrega">Local de Entrega ou Retirada:</label>
+        <input type="text" id="local_entrega" name="local_entrega" required>
+    </div>
+
+    <div id="total-pedido">Total do Pedido: 0.00€</div>
+
+    <a href="#" id="botao-whatsapp" onclick="enviarPedidoWhatsApp()">Solicitar Encomenda via WhatsApp</a>
+
+    <script>
+        function calcularTotal() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let total = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    total += parseFloat(checkbox.value);
+                }
+            });
+            document.getElementById('total-pedido').textContent = `Total do Pedido: ${total.toFixed(2)}€`;
+        }
+
+        function enviarPedidoWhatsApp() {
+            const nome = document.getElementById('nome').value;
+            const localEntrega = document.getElementById('local_entrega').value;
+            let mensagem = "Olá, gostaria de fazer a seguinte encomenda:\n\n";
+            let algumItemSelecionado = false;
+            let totalPedido = 0;
+
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const label = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+                    mensagem += `- ${label}\n`;
+                    totalPedido += parseFloat(checkbox.value);
+                    algumItemSelecionado = true;
+                }
+            });
+
+            if (!algumItemSelecionado) {
+                alert("Por favor, selecione pelo menos um item para encomenda.");
+                return;
+            }
+
+            mensagem += `\nTotal do Pedido: ${totalPedido.toFixed(2)}€`;
+            mensagem += `\nNome: ${nome}\nLocal de Entrega ou Retirada: ${localEntrega}`;
+
+            const numeroWhatsApp = "+351920383614";
+            const mensagemCodificada = encodeURIComponent(mensagem);
+            const linkWhatsApp = `https://wa.me/<span class="math-inline">\{numeroWhatsApp\}?text\=</span>{mensagemCodificada}`;
+
+            window.open(linkWhatsApp, '_blank');
+        }
+
+        // Inicializa o cálculo do total ao carregar a página
